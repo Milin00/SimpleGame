@@ -1,20 +1,24 @@
-﻿// Game.cpp : このファイルには 'main' 関数が含まれています。プログラム実行の開始と終了がそこで行われます。
-//
-
-#include <iostream>
+﻿#include<iostream>
+#include"Player.h"
+#include"Enemy.h"
+#include"GameManager.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Player* player = new Player;
+	Enemy* slime = new Enemy;
+	Enemy* goblin = new Enemy;
+	GameManager* game = new GameManager(*player, *slime, *goblin);
+	while (player->Gethp() > 0 || (slime->Gethp() > 0 && goblin->Gethp() > 0))
+	{
+		std::cout << "プレイヤー攻撃力:" << player->Getattack() << std::endl;
+		std::cout << "スライム攻撃力:" << slime->Getattack() << std::endl;
+		std::cout << "ゴブリン攻撃力:" << goblin->Getattack() << std::endl;
+		std::cout << std::endl;
+		std::cout << "どの敵を攻撃しますか?\n1:スライム\n2:ゴブリン" << std::endl;
+		int x;
+		std::cin >> x;
+		game->Setob(x);
+		game->GameStart(*player, *slime, *goblin);
+	}
 }
-
-// プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
-// プログラムのデバッグ: F5 または [デバッグ] > [デバッグの開始] メニュー
-
-// 作業を開始するためのヒント: 
-//    1. ソリューション エクスプローラー ウィンドウを使用してファイルを追加/管理します 
-//   2. チーム エクスプローラー ウィンドウを使用してソース管理に接続します
-//   3. 出力ウィンドウを使用して、ビルド出力とその他のメッセージを表示します
-//   4. エラー一覧ウィンドウを使用してエラーを表示します
-//   5. [プロジェクト] > [新しい項目の追加] と移動して新しいコード ファイルを作成するか、[プロジェクト] > [既存の項目の追加] と移動して既存のコード ファイルをプロジェクトに追加します
-//   6. 後ほどこのプロジェクトを再び開く場合、[ファイル] > [開く] > [プロジェクト] と移動して .sln ファイルを選択します
