@@ -5,9 +5,8 @@
 class Basic
 {
 protected:
-	int hp = rand() % 101;
+	int hp;
 	int attack = 0;
 public:
 	Basic();
 };
-

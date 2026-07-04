@@ -9,4 +9,3 @@ public:
 	int Gethp() const;
 	int Getattack() const;
 };
-
